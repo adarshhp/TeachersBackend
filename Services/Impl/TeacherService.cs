@@ -34,9 +34,10 @@ namespace MyWebApi.Services.Impl
                 Phone = request.Phone,
                 Subject = request.Subject,
                 Qualification = request.Qualification,
-                JoiningDate = request.JoiningDate,
+                JoiningDate = DateTime.SpecifyKind(request.JoiningDate, DateTimeKind.Utc),
                 IsActive = request.IsActive,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
             };
 
             var createdTeacher = await _teacherRepository.AddAsync(teacher);
@@ -54,7 +55,7 @@ namespace MyWebApi.Services.Impl
             teacher.Phone = request.Phone;
             teacher.Subject = request.Subject;
             teacher.Qualification = request.Qualification;
-            teacher.JoiningDate = request.JoiningDate;
+            teacher.JoiningDate = DateTime.SpecifyKind(request.JoiningDate, DateTimeKind.Utc);
             teacher.IsActive = request.IsActive;
             teacher.UpdatedAt = DateTime.UtcNow;
 
