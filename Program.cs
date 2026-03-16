@@ -6,6 +6,9 @@ using MyWebApi.Repositories.Impl;
 using MyWebApi.Services;
 using MyWebApi.Services.Impl;
 
+// Configure Npgsql to disable DateTime timestamp with time zone requirement
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
